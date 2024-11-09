@@ -1,23 +1,17 @@
 #include <iostream>
 using namespace std;
-void reverseArray(int arr[],int n){
-   int s=0;
-   int e=n-1;
-   while(s<=e){
-      int a = arr[s];
-      int b = arr[e];
-      arr[e] = a;
-      arr[s] = b;
-      s++;
-      e--;
+void rotatedArray(int arr[],int n,int k){
+   int temp[100];
+   for(int i=0;i<n;i++){
+      temp[(i+k)%n] = arr[i];
    }
    for(int i=0;i<n;i++){
-      cout<<arr[i]<<" ";
+      cout<<temp[i]<<" ";
    }
    cout<<endl;
 }
 int main() {
-   cout<<"Reverse Array"<<endl;
+   cout<<"Rotated Array "<<endl;
    while(true){
       int arr[100];
       int n;
@@ -27,7 +21,11 @@ int main() {
          cout<<"Enter the number: ";
          cin>>arr[i];
       }
-      reverseArray(arr,n);
+      int k;
+      cout<<"Enter Rotated velue: ";
+      cin>>k;
+      
+      rotatedArray(arr,n,k);
    }
    return 0;
 }

@@ -1,23 +1,23 @@
 #include <iostream>
 using namespace std;
-void reverseArray(int arr[],int n){
+int pivotElement(int arr[],int n){
    int s=0;
    int e=n-1;
-   while(s<=e){
-      int a = arr[s];
-      int b = arr[e];
-      arr[e] = a;
-      arr[s] = b;
-      s++;
-      e--;
+   int m=0;
+   while(s<e){
+      m = s+(e-s)/2;
+      if(arr[m] >= arr[0]){
+          s = m + 1;
+      }
+      else{
+         e = m;
+      }
    }
-   for(int i=0;i<n;i++){
-      cout<<arr[i]<<" ";
-   }
-   cout<<endl;
+   return e;
 }
+
 int main() {
-   cout<<"Reverse Array"<<endl;
+   cout<<"Pivot Elements "<<endl;
    while(true){
       int arr[100];
       int n;
@@ -27,7 +27,8 @@ int main() {
          cout<<"Enter the number: ";
          cin>>arr[i];
       }
-      reverseArray(arr,n);
+      
+      cout<<"Pivot Element is : "<<pivotElement(arr,n)<<endl;
    }
    return 0;
 }
